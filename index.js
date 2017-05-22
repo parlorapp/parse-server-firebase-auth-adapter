@@ -2,6 +2,7 @@ function validateAuthData(authData, options)
 {
     return options.admin.auth().verifyIdToken(authData.access_token).then(function (decodedToken)
     {
+        console.log(JSON.stringify(decodedToken));
         if (decodedToken && decodedToken.uid == authData.id)
         {
             return;
