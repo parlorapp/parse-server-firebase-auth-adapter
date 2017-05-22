@@ -10,6 +10,7 @@ function validateAuthData(authData, options)
         throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth not found for this user.');
 
     }).catch(function (error) {
+        console.log(error);
         throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth is invalid for this user.');
     });
 }
