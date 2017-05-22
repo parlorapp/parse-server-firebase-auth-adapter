@@ -33,4 +33,4 @@ export class FirebaseAuth {
 }
 
 export default FirebaseAuth;
-module.exports = FirebaseAuth;
+module.exports = new FirebaseAuth();
