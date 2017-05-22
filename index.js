@@ -1,17 +1,7 @@
-var admin = require("firebase-admin");
-var FirebaseUtil = require('util.js');
-
-let options = FirebaseUtil.createOptionsFromEnvironment();
-
-admin.initializeApp({
-    credential: admin.credential.cert(require(options.credential)),
-    databaseURL: options.databaseURL
-});
-
-function validateAuthData(authData)
+function validateAuthData(authData, options)
 {
-    return admin.auth().verifyIdToken(authData.access_token)
-    .then(function (decodedToken) {
+    return options.admin.auth().verifyIdToken(authData.access_token).then(function (decodedToken)
+    {
         if (decodedToken && decodedToken.uid == authData.id)
         {
             return;
