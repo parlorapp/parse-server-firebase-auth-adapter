@@ -13,7 +13,7 @@ function validateAuthData(authData, options)
     });
 }
 
-function validateAppId(appIds, authData)) {
+function validateAppId(appIds, authData) {
     return Promise.resolve();
 }
 
