@@ -6,7 +6,6 @@ So this was meant to be a fork of some other module but i ended up rewriting it 
 Here is how you would authenticate a firebase token using curl
 ````
 #!/bin/bash
-APPLICATION_ID=ccJ45ICdt0b1llnGTvGz7YimD7Ln0MgfjvP3XkvK
 curl -X POST \
   -H "X-Parse-Application-Id: ${APPLICATION_ID}" \
   -H "Content-Type: application/json" \
