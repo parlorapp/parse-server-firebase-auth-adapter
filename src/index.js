@@ -8,29 +8,26 @@ admin.initializeApp({
     databaseURL: options.databaseURL
 });
 
-export class FirebaseAuth {
+function validateAuthData(authData)
+{
+    return admin.auth().verifyIdToken(authData.access_token)
+    .then(function (decodedToken) {
+        if (decodedToken && decodedToken.uid == authData.id)
+        {
+            return;
+        }
+        throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth not found for this user.');
 
-    constructor() {
-    }
-
-    validateAuthData(authData, options) {
-        return admin.auth().verifyIdToken(authData.access_token)
-            .then(function (decodedToken) {
-                if (decodedToken && decodedToken.uid == authData.id) {
-                    return;                    
-                }
-
-                throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth not found for this user.');
-
-            }).catch(function (error) {
-                throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth is invalid for this user.');
-            });
-    }
-
-    validateAppId() {
-        return Promise.resolve();
-    }
+    }).catch(function (error) {
+        throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth is invalid for this user.');
+    });
 }
 
-export default new FirebaseAuth();
-module.exports = new FirebaseAuth();
+function validateAppId(appIds, authData)) {
+    return Promise.resolve();
+}
+
+module.exports = {
+  validateAppId: validateAppId,
+  validateAuthData: validateAuthData
+};
