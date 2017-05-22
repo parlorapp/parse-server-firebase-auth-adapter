@@ -1,5 +1,5 @@
-import * as admin from "firebase-admin";
-import { FirebaseUtil } from './util';
+var admin = require("firebase-admin");
+var FirebaseUtil = require('util.js');
 
 let options = FirebaseUtil.createOptionsFromEnvironment();
 
