@@ -1,25 +1,29 @@
-function validateAuthData(authData, options)
-{
-    return options.admin.auth().verifyIdToken(authData.access_token).then(function (decodedToken)
+export class FirebaseAuth {
+
+    constructor() {
+    }
+
+    function validateAuthData(authData, options)
     {
-        console.log(JSON.stringify(decodedToken));
-        if (decodedToken && decodedToken.uid == authData.id)
+        return options.admin.auth().verifyIdToken(authData.access_token).then(function (decodedToken)
         {
-            return;
-        }
-        throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth not found for this user.');
+            console.log(JSON.stringify(decodedToken));
+            if (decodedToken && decodedToken.uid == authData.id)
+            {
+                return;
+            }
+            throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth not found for this user.');
 
-    }).catch(function (error) {
-        console.log(error);
-        throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth is invalid for this user.');
-    });
+        }).catch(function (error) {
+            console.log(error);
+            throw new Parse.Error(Parse.Error.OBJECT_NOT_FOUND, 'Firebase auth is invalid for this user.');
+        });
+    }
+
+    function validateAppId(appIds, authData) {
+        return Promise.resolve();
+    }
 }
 
-function validateAppId(appIds, authData) {
-    return Promise.resolve();
-}
-
-module.exports = {
-  validateAppId: validateAppId,
-  validateAuthData: validateAuthData
-};
+export default FirebaseAuth;
+module.exports = FirebaseAuth;
