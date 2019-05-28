@@ -1,8 +1,5 @@
-class FirebaseAuth
+export class FirebaseAuth
 {
-    constructor() {
-    }
-
     function validateAuthData(authData, options)
     {
         return options.admin.auth().verifyIdToken(authData.access_token).then(
