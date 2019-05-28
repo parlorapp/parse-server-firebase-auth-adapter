@@ -1,5 +1,5 @@
-export class FirebaseAuth {
-
+class FirebaseAuth
+{
     constructor() {
     }
 
@@ -28,4 +28,4 @@ export class FirebaseAuth {
 }
 
 export default FirebaseAuth;
-module.exports = new FirebaseAuth();
+module.exports = FirebaseAuth;
