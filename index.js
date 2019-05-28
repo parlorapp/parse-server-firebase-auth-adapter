@@ -1,4 +1,4 @@
-export class FirebaseAuth
+class FirebaseAuth
 {
     function validateAuthData(authData, options)
     {
